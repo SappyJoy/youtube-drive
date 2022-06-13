@@ -3,7 +3,7 @@ import os
 import sys
 import uuid
 import argparse
-import youtube_dl
+import yt_dlp
 from youtube_upload import auth, lib, upload_video
 from . import youtube_codec
 
@@ -52,7 +52,7 @@ def download_youtube_video(video_id, output_file_path):
     home = os.path.expanduser("~")
     cookies = os.path.join(home, "youtube.com_cookies.txt")
     ydl_opts = {'outtmpl': output_file_path, 'cookiefile': cookies}
-    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([f"https://www.youtube.com/watch?v={video_id}"])
 
 
